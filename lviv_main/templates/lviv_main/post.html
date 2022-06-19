@@ -1,0 +1,23 @@
+{% extends 'lviv_main/base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="col-6">
+                {% if post.photo %}
+                <img class="img-thumbnail" src="{{post.photo.url}}">
+                {% endif %}
+            </div>
+            <div class="col-6">
+                <h3>{{post.title}}</h3>
+                {{post.content|linebreaks}}
+            </div>
+        </div>
+    </div>
+
+</section>
+{% endblock %}

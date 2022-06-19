@@ -1,0 +1,100 @@
+{% extends 'lviv_main/base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+<link type = "text/css" href="{% static 'lviv_main/css/log_in.css' %}" rel="stylesheet" />
+<div class="wrapper fadeInDown zero-raduis">
+  	  <div id="formContent">
+  	    <!-- Tabs Titles -->
+
+  	    <!-- Icon -->
+  	    <div class="fadeIn first">
+  	      <!-- <img src="http://danielzawadzki.com/codepen/01/icon.svg" id="icon" alt="User Icon" /> -->
+  	      <h2 class="my-5">Вхід</h2>
+  	    </div>
+
+  	    <!-- Login Form -->
+  	    <form method="post" id="main_form2">
+            <!-- <input type="email" id="email" class="fadeIn second zero-raduis" name="email" placeholder="{{ form.email.label }}"> -->
+            <!-- <input type="text" id="password" class="fadeIn third zero-raduis" name="login" placeholder="пароль"> -->
+            
+            {% csrf_token %}
+            <div class="form" id="form1">
+              {{form.username}}
+            </div>
+            <div class="form" id="form2">
+              {{form.password}}
+            </div>
+            <div id="formFooter">
+                <a class="underlineHover" href="#">Забули пароль?</a>
+            </div>
+            <!-- <input type="submit" class="fadeIn fourth zero-raduis" value="Увійти"> -->
+
+
+            <!-- <form method="post"> -->
+            <input type="submit" class="fadeIn fourth zero-raduis" value="Увійти">
+            <!-- </form> -->
+            
+            <h2>Немає акаунту ?</h2>
+
+            <a href="{% url 'register' %}">   
+                <input type="button" class="fadeIn fourth zero-raduis pc" value="Реєстрація">
+            </a> 
+  	    </form>
+
+        <!-- Додавання класів в інпути -->
+        <script>
+          function addclasses_username() {
+            // alert('poza start');
+            let form = document.getElementById('id_username');
+
+            let classes = ["fadeIn", "second", "zero-raduis"];
+
+            for (let i in classes) {
+              form.classList.add(classes[i]);
+              // alert(i);
+            }
+            // alert('poza end');
+          }
+
+          function addclasses_pass() {
+            // alert('poza start');
+            let form = document.getElementById('id_password');
+
+            let classes = ["fadeIn", "third", "zero-raduis"];
+
+            for (let i in classes) {
+              form.classList.add(classes[i]);
+              // alert(i);
+            }
+            // alert('poza end');
+          }
+          addclasses_username();
+          addclasses_pass();
+        </script>
+
+        <script type="text/javascript">
+          document.getElementById('id_password').type = 'text';
+          document.getElementById('id_username').placeholder='Логін';
+          document.getElementById('id_password').placeholder='Пароль';
+        </script>
+
+
+  	  </div>
+  </div>
+
+  <!-- <h1>{{title}}</h1>
+
+  <form method="post">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <button type="submit">(Увійти)</button>
+  </form> -->
+  
+{% endblock %}

@@ -1,0 +1,303 @@
+<div class="container d-flex align-items-center justify-content-between">
+
+
+    <h1 class="logo navbar-brand">
+      <span><img src="{% static 'lviv_main/images/lion.png' %}" alt="lion logo"></span>
+      <a href="{% url 'main' %}">Lviv Places</a>
+    </h1>
+
+    <!-- Uncomment below if you prefer to use an image logo -->
+    <!-- <a href="index.html" class="logo"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
+
+    <!-- МЕНЮ -->
+    <nav id="navbar" class="navbar">
+      <ul>
+        <!-- Всі категорії -->
+        {% if cat_selected == 0 %} 
+        <li class="selected">Всі категорії</li>
+        {% else %} 
+        <li><a href="{% url 'all_cats' %}">Всі категорії</a></li>
+        {% endif %}
+
+        <!-- категорії -->
+        <ul>
+          <li class="dropdown"><a href="#"><span>Вибрати категорію</span> <i class="bi bi-chevron-right"></i></a>
+            <ul>
+              {% for c in cats %} 
+                {% if c.pk == cat_selected %} 
+                <li class="selected">{{c.name}}</li>
+                {% else %} 
+                <li><a href="{{ c.get_absolute_url }}">{{ c.name }}</a></li>
+                {% endif %}
+              {% endfor %}
+            </ul>
+          </li>
+        </ul>
+        
+        
+        <!-- Інші кнопки -->
+        <ul id = "mainmenu" class="mainmenu">
+          <li class="logo"><a href="{% url 'main' %}"><div class="logo"></div></a></li>
+          {% for m in menu %}
+          {% if not forloop.last %} 
+          <li><a href="{% url m.url_name %}">{{m.title}}</a></li>
+          {% else %} 
+          <li class="last"><a href="{% url m.url_name %}">{{m.title}}</a></li>
+          {% endif %} 
+          {% endfor %}
+
+          <li class="last"><a href="{% url 'login' %}">Увійти</a></li>
+          <!-- <li class="last"><a href="{% url 'register' %}">Реєстрація</a></li> -->
+
+          <li class="last"><a href="{% url 'admin:index' %}">Адмін</a></li>
+        </ul>
+
+        <!-- <li><a class="active" href="index_1.html">Home</a></li>
+        <li><a href="our-story.html">Our Story</a></li>
+        <li><a href="events.html">Events</a></li>
+        <li><a href="gallery.html">Gallery</a></li> -->
+        
+
+
+      </ul>
+      
+      <i class="bi bi-list mobile-nav-toggle"></i>
+    </nav><!-- .navbar -->
+
+</div>
+
+
+
+
+
+<nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+    <div class="container px-4 px-lg-5">
+        
+      <h1 class="logo">
+        <span><img src="{% static 'lviv_main/images/lion.png' %}" alt="lion logo"></span>
+        <a href="{% url 'main' %}">Lviv Places</a>
+      </h1>
+      <!-- <button class="navbar-toggler navbar-toggler-right" type="button" 
+      data-bs-toggle="collapse" data-bs-target="#navbarResponsive" 
+      aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"> -->
+      <button class="navbar-toggler" type="button" 
+      data-toggle="collapse" data-target="#navbarToggler" 
+      aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">    
+          Меню
+          <!-- <i class="fas fa-bars"></i> -->
+          <span class="navbar-toggler-icon"></span>
+      </button>
+        
+        <!-- <div class="collapse navbar-collapse" id="navbarResponsive"> -->
+        <div class="collapse navbar-collapse" id="navbarToggler">
+          <nav id="navbar" class="navbar">
+            <ul>
+              <!-- Всі категорії -->
+              {% if cat_selected == 0 %} 
+              <li class="selected">Всі категорії</li>
+              {% else %} 
+              <li><a href="{% url 'all_cats' %}">Всі категорії</a></li>
+              {% endif %}
+    
+              <!-- категорії -->
+              <ul>
+                <li class="dropdown"><a href="#"><span>Вибрати категорію</span> <i class="bi bi-chevron-right"></i></a>
+                  <ul>
+                    {% for c in cats %} 
+                      {% if c.pk == cat_selected %} 
+                      <li class="selected">{{c.name}}</li>
+                      {% else %} 
+                      <li><a href="{{ c.get_absolute_url }}">{{ c.name }}</a></li>
+                      {% endif %}
+                    {% endfor %}
+                  </ul>
+                </li>
+              </ul>
+              
+              
+              <!-- Інші кнопки -->
+              <ul id = "mainmenu" class="mainmenu">
+                <li class="logo"><a href="{% url 'main' %}"><div class="logo"></div></a></li>
+                {% for m in menu %}
+                {% if not forloop.last %} 
+                <li><a href="{% url m.url_name %}">{{m.title}}</a></li>
+                {% else %} 
+                <li class="last"><a href="{% url m.url_name %}">{{m.title}}</a></li>
+                {% endif %} 
+                {% endfor %}
+    
+                <li class="last"><a href="{% url 'login' %}">Увійти</a></li>
+                <!-- <li class="last"><a href="{% url 'register' %}">Реєстрація</a></li> -->
+    
+                <li class="last"><a href="{% url 'admin:index' %}">Адмін</a></li>
+              </ul>
+    
+              <!-- <li><a class="active" href="index_1.html">Home</a></li>
+              <li><a href="our-story.html">Our Story</a></li>
+              <li><a href="events.html">Events</a></li>
+              <li><a href="gallery.html">Gallery</a></li> -->
+              
+    
+    
+            </ul>
+            
+            <i class="bi bi-list mobile-nav-toggle"></i>
+          </nav><!-- .navbar -->
+        </div>
+
+    </div>
+</nav>
+
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    
+    <a class="navbar-brand" href="{% url 'main' %}"><span><img src="{% static 'lviv_main/images/lion.png' %}" alt="lion logo"></span>Lviv Places</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">Menu
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  
+    <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+      <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+
+        <!-- Всі категорії -->
+
+        {% if cat_selected == 0 %} 
+        <li class="nav-item selected">Всі категорії</li>
+        {% else %} 
+        <li><a href="{% url 'all_cats' %}">Всі категорії</a></li>
+        {% endif %}
+
+
+        <!-- категорії -->
+        <ul>
+            <li class="nav-item dropdown"><a href="#"><span>Вибрати категорію</span> <i class="bi bi-chevron-right"></i></a>
+                <ul>
+                {% for c in cats %} 
+                    {% if c.pk == cat_selected %} 
+                    <li class="nav-item selected">{{c.name}}</li>
+                    {% else %} 
+                    <li><a href="{{ c.get_absolute_url }}">{{ c.name }}</a></li>
+                    {% endif %}
+                {% endfor %}
+                </ul>
+            </li>
+        </ul>
+
+
+        <!-- Інші кнопки -->
+        <ul id = "mainmenu" class="mainmenu">
+            <li class="nav-item logo"><a href="{% url 'main' %}"><div class="logo"></div></a></li>
+            {% for m in menu %}
+            {% if not forloop.last %} 
+            <li><a href="{% url m.url_name %}">{{m.title}}</a></li>
+            {% else %} 
+            <li class="nav-item last"><a href="{% url m.url_name %}">{{m.title}}</a></li>
+            {% endif %} 
+            {% endfor %}
+    
+            <li class="nav-item last"><a href="{% url 'login' %}">Увійти</a></li>
+            <!-- <li class="last"><a href="{% url 'register' %}">Реєстрація</a></li> -->
+    
+            <li class="nav-item last"><a href="{% url 'admin:index' %}">Адмін</a></li>
+        </ul>
+
+      </ul>
+      
+        
+    </div>
+</nav>
+
+
+
+
+
+
+<!-- ======= Header ======= -->
+<header id="header" class="navbar-expand-lg fixed-top">
+
+
+
+    <div class="container d-flex align-items-center justify-content-between">
+
+
+      <h1 class="logo navbar-brand">
+        <span><img src="{% static 'lviv_main/images/lion.png' %}" alt="lion logo"></span>
+        <a href="{% url 'main' %}">Lviv Places</a>
+      </h1>
+  
+      <!-- Uncomment below if you prefer to use an image logo -->
+      <!-- <a href="index.html" class="logo"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
+  
+      <!-- МЕНЮ -->
+
+
+      <button class="navbar-toggler" type="button" data-toggle="collapse" 
+      data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" 
+      aria-expanded="false" aria-label="Toggle navigation">Menu
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+
+      <nav id="navbar" class="navbar">
+
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+            <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+      
+              <!-- Всі категорії -->
+      
+              {% if cat_selected == 0 %} 
+              <li class="nav-item selected">Всі категорії</li>
+              {% else %} 
+              <li><a href="{% url 'all_cats' %}">Всі категорії</a></li>
+              {% endif %}
+      
+      
+              <!-- категорії -->
+              <ul>
+                  <li class="nav-item dropdown"><a href="#"><span>Вибрати категорію</span> <i class="bi bi-chevron-right"></i></a>
+                      <ul>
+                      {% for c in cats %} 
+                          {% if c.pk == cat_selected %} 
+                          <li class="nav-item selected">{{c.name}}</li>
+                          {% else %} 
+                          <li><a href="{{ c.get_absolute_url }}">{{ c.name }}</a></li>
+                          {% endif %}
+                      {% endfor %}
+                      </ul>
+                  </li>
+              </ul>
+      
+      
+              <!-- Інші кнопки -->
+              <ul id = "mainmenu" class="mainmenu">
+                  <li class="nav-item logo"><a href="{% url 'main' %}"><div class="logo"></div></a></li>
+                  {% for m in menu %}
+                  {% if not forloop.last %} 
+                  <li><a href="{% url m.url_name %}">{{m.title}}</a></li>
+                  {% else %} 
+                  <li class="nav-item last"><a href="{% url m.url_name %}">{{m.title}}</a></li>
+                  {% endif %} 
+                  {% endfor %}
+          
+                  <li class="nav-item last"><a href="{% url 'login' %}">Увійти</a></li>
+                  <!-- <li class="last"><a href="{% url 'register' %}">Реєстрація</a></li> -->
+          
+                  <li class="nav-item last"><a href="{% url 'admin:index' %}">Адмін</a></li>
+              </ul>
+      
+            </ul>
+            
+              
+        </div>
+        
+        <i class="bi bi-list mobile-nav-toggle"></i>
+      </nav><!-- .navbar -->
+  
+    </div>
+
+
+
+    
+</header><!-- End Header -->
+<br><br><br>
+

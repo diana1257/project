@@ -1,0 +1,46 @@
+{% extends 'lviv_main/base.html' %}
+
+{% load static %}
+
+{% block content %}
+<section id="about" class="about">
+    <div class="container-fluid">
+        <div class="section-title">
+            <h3><b>{{title}}</b></h3>
+        </div>
+
+        <div class="row">
+            <div class="col-1"></div>
+            <div class="col-5">
+                <h5>Зміст сторінки про сайт:</h5>
+                <p></p>
+                <h7>
+                    Цей сайт допоможе Вам знайти цікаву локацію або заклад харчування у Львові.
+                    Також із його допомогою можна скористатись вже готовою підбіркою місць та закладів, або ж випробувати рекомендований маршрут, 
+                    який містить те, що є найцікавішим і знаходиться поблизу.
+                </h7>
+                <p></p>
+                <p>
+                    До вашої уваги представлено кілька категорій, а саме: Заклади харчування, Місця/Локації, Новини. Також є уже готові варіанти: Рекомендована підбірка та Рекомендований маршрут.
+                    Сподіваємось, Вам це стане корисним!
+                </p>
+    
+            </div>
+            <div class="col-5">
+                <img class="img-fluid" src="{% static 'lviv_main/images/ph_lviv.jpg' %}"  alt="lviv_photo"> 
+                <!-- <img class="img-fluid" src="{% static 'lviv_main/images/ph_lviv.jpg' %}"  alt="lviv_photo"> <br> -->
+            </div>
+            <div class="col-1"></div>
+    
+        </div>
+
+    </div>
+    
+    
+</section>
+
+
+{% endblock %} 
+
+<!-- описати кожну кнопку і категорію -->
+

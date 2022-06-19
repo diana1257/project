@@ -1,0 +1,64 @@
+{% extends 'lviv_main/base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+
+
+<section>
+    <div class="container">
+        {% for p in page_obj %}
+        <div class="row" style='margin-bottom: 1pc;'>
+
+            <div class="col-5">
+                {% if p.photo %}
+                <img class="img-thumbnail" src="{{p.photo.url}}">
+                {% endif %}
+            </div>
+
+            <div class="col-7">    
+                <h2>{{p.title}}</h2>
+    
+                {% autoescape off %}
+                {{p.content|linebreaks|truncatewords:30}}
+                {% endautoescape %}
+
+                <div class="clear"></div>
+                <p class="btn btn-outline-info link-read-post"><a href="{{ p.get_absolute_url }}">Читати пост</a></p>
+                
+                <div class="group small d-flex">
+                    <p class="first">Категорія: {{p.cat}} </p>
+                    <p> | </p>
+                    <p class="last">Дата: {{p.time_update|date:"d-m-Y H:i:s"}} </p>
+                </div>
+            </div>
+            <div class = 'clear'></div>
+           
+        </div>
+
+        {% endfor %}
+    </div>
+    <div class="container">
+        <div class="row">
+            <nav aria-label="Page navigation ">
+                <ul class="pagination d-flex justify-content-center">
+                    <!-- <li class="page-item"><a class="page-link" href="?page={{page_obj.paginator.previous_page_number}}"><h6>Previous</h6></a></li> -->
+
+                    {% for p in page_obj.paginator.page_range %}
+                        {% if p == page_obj.number %}
+                        <li class="page-item active" aria-current="page"><a class="page-link" href="?page={{p}}"><h6>{{p}}</h6></a></li>
+                        {% else %}
+                        <li class="page-item"><a class="page-link" href="?page={{p}}"><h6>{{p}}</h6></a></li>
+                        {% endif %}
+                    {% endfor %}
+                    
+                    <!-- <li class="page-item"><a class="page-link" href="?page={{page_obj.paginator.next_page_number}}"><h6>Next</h6></a></li> -->
+                </ul>
+            </nav>
+        </div>
+    </div>
+</section>
+
+
+{% endblock %}

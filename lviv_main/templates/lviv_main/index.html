@@ -1,0 +1,187 @@
+{% extends 'lviv_main/base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+  <!-- ======= Hero Section ======= -->
+  <section id="hero">
+    <div id="heroCarousel" data-bs-interval="3000" class="carousel slide carousel-fade" data-bs-ride="carousel">
+
+      <ol class="carousel-indicators" id="hero-carousel-indicators"></ol>
+
+      <div class="carousel-inner" role="listbox">
+
+        <!-- Slide 1 -->
+        <div class="carousel-item active" style="background-image: url({% static 'lviv_main/images/main_photo.jpg' %})">
+        </div>
+
+        <!-- Slide 2 -->
+        <div class="carousel-item" style="background-image: url({% static 'lviv_main/images/main_main.jpg' %})">
+        </div>
+
+        <!-- Slide 3 -->
+        <div class="carousel-item" style="background-image: url({% static 'lviv_main/images/maaain.jpg' %})">
+        </div>
+
+      </div>
+
+      <a class="carousel-control-prev" href="#heroCarousel" role="button" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon bi bi-chevron-left" aria-hidden="true"></span>
+      </a>
+
+      <a class="carousel-control-next" href="#heroCarousel" role="button" data-bs-slide="next">
+        <span class="carousel-control-next-icon bi bi-chevron-right" aria-hidden="true"></span>
+      </a>
+
+    </div>
+  </section><!-- End Hero -->
+
+
+    <!-- ======= My & Family Section ======= -->
+    <section id="about" class="about">
+      <div class="container">
+
+        <div class="section-title">
+          <h2>Відкрий для себе місто Лева по-новому!</h2>
+          <p>Тут можна знайти багато цікавого про Львів ;)</p>
+        </div>
+
+        <div class="row content">
+          <div class="col-lg-6">
+            <img src="{% static 'lviv_main/images/lviv_winter.jpg' %}" class="img-fluid" alt="">
+          </div>
+          <div class="col-lg-6 pt-4 pt-lg-0">
+            <p>
+              Вітаю! Очевидно, Ви зацікавлені у тому, щоб гарно провести час у Львові.
+            </p>
+            <!-- <ul>
+              <li><i class="ri-check-double-line"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat</li>
+              <li><i class="ri-check-double-line"></i> Duis aute irure dolor in reprehenderit in voluptate velit</li>
+              <li><i class="ri-check-double-line"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat</li>
+            </ul> -->
+            <p>
+              Українською мовою воно зветься Львів, польською — Lwow, латинською — Leopolis, німецькою — Lemberg. 
+            </p>
+            <p>
+              Місто, виплекане історією нашої землі, огорнене легендами та переказами, наповнене ароматами кави та шоколаду. 
+              Гостинність жителів, вишуканість будівель та вуличок, незабутня атмосфера національного духу приємно вас здивують.
+              Ваша прогулянка містом стане цікавішою! 
+            </p>
+            <a href="{% url 'about' %}" class="btn-learn-more">Більше</a>
+          </div>
+        </div>
+
+      </div>
+    </section><!-- End My & Family Section -->
+
+    <!-- ======= Features Section ======= -->
+    <section id="features" class="features">
+      <div class="container">
+
+        <div class="row">
+          {% for c in cats %} 
+              <div class="col-lg-4 col-md-6 icon-box">
+                  <div class="icon"><svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" fill="currentColor" class="bi bi-arrow-down-circle-fill" viewBox="0 0 16 16">
+                    <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v5.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V4.5z"/>
+                  </svg></div>
+                  <h4 class="title"><a href="{{ c.get_absolute_url }}">{{c.name}}</a></h4>
+                  <p class="description">Клікни сюди :)</p>
+              </div>
+          {% endfor %}
+        </div>
+
+      </div>
+  </section><!-- End Features Section -->
+
+    <!-- ======= Recent Photos Section ======= -->
+    <!-- <section id="recent-photos" class="recent-photos">
+      <div class="container">
+
+        <div class="section-title">
+          <h2>Recent Photos</h2>
+          <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
+        </div>
+
+        <div class="recent-photos-slider swiper">
+          <div class="swiper-wrapper align-items-center">
+            <div class="swiper-slide"><a href="{% static 'lviv_main/img/recent-photos/recent-photos-1.jpg' %}" class="glightbox"><img src="{% static 'lviv_main/img' %}" class="img-fluid" alt=""></a></div>
+            <div class="swiper-slide"><a href="{% static 'lviv_main/img/recent-photos/recent-photos-2.jpg' %}" class="glightbox"><img src="{% static 'lviv_main/img' %}" class="img-fluid" alt=""></a></div>
+            <div class="swiper-slide"><a href="{% static 'lviv_main/img/recent-photos/recent-photos-3.jpg' %}" class="glightbox"><img src="{% static 'lviv_main/img' %}" class="img-fluid" alt=""></a></div>
+            <div class="swiper-slide"><a href="{% static 'lviv_main/img/recent-photos/recent-photos-4.jpg' %}" class="glightbox"><img src="{% static 'lviv_main/img' %}" class="img-fluid" alt=""></a></div>
+            <div class="swiper-slide"><a href="{% static 'lviv_main/img/recent-photos/recent-photos-5.jpg' %}" class="glightbox"><img src="{% static 'lviv_main/img' %}" class="img-fluid" alt=""></a></div>
+            <div class="swiper-slide"><a href="{% static 'lviv_main/img/recent-photos/recent-photos-6.jpg' %}" class="glightbox"><img src="{% static 'lviv_main/img' %}" class="img-fluid" alt=""></a></div>
+            <div class="swiper-slide"><a href="{% static 'lviv_main/img/recent-photos/recent-photos-7.jpg' %}" class="glightbox"><img src="{% static 'lviv_main/img' %}" class="img-fluid" alt=""></a></div>
+            <div class="swiper-slide"><a href="{% static 'lviv_main/img/recent-photos/recent-photos-8.jpg' %}" class="glightbox"><img src="{% static 'lviv_main/img' %}" class="img-fluid" alt=""></a></div>
+          </div>
+          <div class="swiper-pagination"></div>
+        </div>
+
+      </div>
+    </section> -->
+    <!-- End Recent Photos Section -->
+
+
+
+
+
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Vendor JS Files -->
+  <script src="{% static 'lviv_main/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+  <script src="{% static 'lviv_main/vendor/glightbox/js/glightbox.min.js' %}"></script>
+  <script src="{% static 'lviv_main/vendor/isotope-layout/isotope.pkgd.min.js' %}"></script>
+  <script src="{% static 'lviv_main/vendor/swiper/swiper-bundle.min.js' %}"></script>
+  <script src="{% static 'lviv_main/vendor/php-email-form/validate.js' %}"></script>
+
+  <!-- Template Main JS File -->
+  <!-- <script src="{% static 'lviv_main/js/main.js' %}"></script> -->
+
+<!-- <h1>{{title}}</h1>
+
+<ul>
+    {% for p in posts %}
+    <li><div class="article-pannel">
+      <p class="first">Категорія: {{p.cat}}</p>
+      <p class="last">Дата: {{p.time_update|date:"d-m-Y H:i:s"}}</p>
+    </div>
+
+{% if p.photo %} 
+    <p><img class="img-article-left thumb" src="{{p.photo.url}}"></p>
+{% endif %}
+
+        <h2>{{p.title}}</h2>
+
+        {% autoescape off %}
+        {{p.content|linebreaks|truncatewords:50}}
+        {% endautoescape %}
+
+        <div class="clear"></div>
+        <p class="link-read-post"><a href="{{ p.get_absolute_url }}">Читати пост</a></p>
+        
+    </li>
+    {% endfor %}
+</ul> -->
+
+{% endblock %} 
+
+
+
+
+
+<!-- <!DOCTYPE html>
+<html lang=en>
+    <head>
+        <meta charset="UTF-8">
+        <title>{{ title }}</title> 
+    </head>
+    <body>
+
+        <ul>
+            {% for m in menu %}
+            <li>{{m}}</li>
+            {% endfor %}
+        </ul>
+
+    </body>
+</html> -->

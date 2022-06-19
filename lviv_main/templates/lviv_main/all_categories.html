@@ -1,0 +1,30 @@
+{% extends 'lviv_main/base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+    <!-- ======= Features Section ======= -->
+    <section id="features" class="features">
+        <div class="container">
+
+          <div class="row">
+            {% for c in cats %} 
+                <div class="col-lg-4 col-md-6 icon-box">
+                    <!-- <div class="icon"><i class="bi bi-laptop"></i></div> -->
+                    <!-- <div class="icon"><img src="{% static 'lviv_main/images/lion.png' %}"><i class="bi bi-binoculars-fill"></i></div> -->
+                    <div class="icon"><svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" fill="currentColor" class="bi bi-arrow-down-circle-fill" viewBox="0 0 16 16">
+                      <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v5.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V4.5z"/>
+                    </svg>
+                    <i class="bi bi-binoculars-fill"></i></div>
+
+                    <h4 class="title"><a href="{{ c.get_absolute_url }}">{{c.name}}</a></h4>
+                    <p class="description">Клікни сюди :)</p>
+                </div>
+            {% endfor %}
+          </div>
+
+        </div>
+    </section><!-- End Features Section -->
+
+{% endblock %}
